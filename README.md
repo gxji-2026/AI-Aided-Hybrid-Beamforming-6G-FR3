@@ -516,11 +516,46 @@ A future direction is to connect these layers through AI-aided RF/PHY co-design 
 
 ---
 
-## 20. Citation
+## 20. Code Availability
+
+This repository is maintained primarily as a public research record
+for the AI-Aided Hybrid Beamforming for 6G FR3 project.
+
+Research methodology, system architecture, experimental protocols,
+verified results, and selected technical documentation are made
+publicly available to support scientific communication and
+reproducibility.
+
+Source code, implementation scripts, model checkpoints, raw datasets,
+and internal experimental tools are not publicly distributed at this
+stage.
+
+Researchers with a genuine interest in reproducing, validating, or
+extending this work are welcome to contact the author regarding
+research collaboration and potential access to selected implementation
+materials.
+
+Access, when appropriate, may be provided on a case-by-case basis
+depending on the research purpose, collaboration context, and
+applicable intellectual-property or third-party restrictions.
+
+### Research Transparency
+
+The project follows a results-open, implementation-controlled research
+model: engineering claims are supported by deterministic verification
+and documented experimental evidence, while implementation materials
+are released selectively when appropriate for research collaboration
+and independent validation.
+
+---
+
+## 21. Citation
 
 If this repository contributes to your research, please cite the corresponding publication or technical report associated with the specific released result.
 
-A repository-level `CITATION.cff` will be added as public results mature.
+A repository-level `CITATION.cff` is provided for citation of this
+research repository. Specific publications and technical reports
+should be cited when referring to individual released results.
 
 ---
 
