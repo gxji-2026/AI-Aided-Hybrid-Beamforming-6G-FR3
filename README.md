@@ -256,11 +256,56 @@ HARD
   -> difficult or unrecoverable under the available repair hierarchy
 ```
 
-In the current P17 reference study, FAST recovery has demonstrated complete recovery of the audited EASY subset (97/97), while MODERATE and HARD cases motivate deeper hierarchical-repair research. This is an internal research result to be subjected to larger frozen-rule validation before being generalized.
+In the P17 reference study, 930 PRE-REPAIR failure frames are organized into 331 distinct failure episodes. FAST recovers 148/930 failure frames (15.91%), while recovering 97/331 failure episodes (29.31%) at the episode/onset level.
+
+Across the frozen P10/P14/P17/P24 benchmark, FAST episode recovery ranges from **15.52% to 30.25%**. The MODERATE population requiring possible stronger escalation represents **8.76% to 20.25%** of failure episodes, while the HARD population represents **49.50% to 69.68%**.
+
+These results provide quantitative evidence that the research direction from statistical outage toward recoverability-aware operational reliability is technically viable. They are a **validated intermediate research checkpoint**, not a completed end-to-end reliability solution.
 
 ---
 
-## 10. Hierarchical Repair Concept
+## 10. System V0.5 Cross-Pilot Benchmark — Frozen V0.1
+
+The first frozen cross-pilot System V0.5 benchmark evaluates P10, P14, P17, and P24 under a common protocol, with no retraining, pilot-specific tuning, LLM inference, or change to the underlying beamforming mathematics.
+
+| Pilot | Failure Frames | Failure Episodes | FAST Frame Recovery | FAST Episode Recovery | MODERATE | HARD |
+|---|---:|---:|---:|---:|---:|---:|
+| P10 | 1006 | 400 | 17.59% | 30.25% | 20.25% | 49.50% |
+| P14 | 935 | 351 | 15.08% | 25.93% | 11.68% | 62.39% |
+| P17 | 930 | 331 | 15.91% | 29.31% | 8.76% | 61.93% |
+| P24 | 895 | 277 | 7.15% | 15.52% | 14.80% | 69.68% |
+
+### FAST recovery benchmark
+
+![FAST recovery across pilot-power conditions](figures/system_v05_fig2_fast_recovery_v2.png)
+
+The same frozen FAST mechanism recovers **15.52–30.25% of failure episodes** across the four pilot conditions.
+
+At P17, **930 failure frames form 331 distinct failure episodes**. FAST recovers **148/930 frames (15.91%)** and **97/331 episodes (29.31%)**. Frame-level and episode-level recovery therefore measure complementary operational quantities.
+
+### Recoverability-aware episode composition
+
+![Recoverability-aware failure-episode composition](figures/system_v05_fig3_recoverability_composition_v2.png)
+
+```text
+Failure Episode
+      |
+      +-- EASY ------> FAST / lightweight recovery
+      |
+      +-- MODERATE --> selective stronger escalation
+      |
+      `-- HARD ------> abandon / outage handling
+```
+
+Only **8.76–20.25%** of failure episodes enter the MODERATE escalation population. The HARD population ranges from **49.50–69.68%**, motivating selective abandonment rather than increasingly expensive recovery attempts for every failure.
+
+**Frozen technical report:** *System V0.5 Cross-Pilot Benchmark Report V0.1 — FROZEN (October 2026)*
+
+This benchmark establishes cross-pilot feasibility of the recoverability-aware hierarchy. It does **not** yet demonstrate successful DIGITAL/RF recovery of MODERATE cases, independent predictive recoverability classification before repair, or a complete end-to-end operational reliability gain.
+
+---
+
+## 11. Hierarchical Repair Concept
 
 The intended architecture is deliberately hierarchical so that expensive or disruptive interventions are not used when a simpler repair is sufficient.
 
@@ -297,7 +342,7 @@ A future research question is whether a lightweight supervisor can identify whic
 
 ---
 
-## 11. LLM Role — Deferred Exception Supervision
+## 12. LLM Role — Deferred Exception Supervision
 
 LLMs are **not** used as replacements for the numerical beamforming solver or deterministic QoS verification.
 
@@ -329,7 +374,7 @@ Deterministic beamforming/QoS engine verifies
 
 ---
 
-## 12. Large-Scale Validation
+## 13. Large-Scale Validation
 
 Small and medium research runs are used to discover mechanisms and freeze rules; they are not sufficient for final statistical claims.
 
@@ -350,7 +395,7 @@ Crucially, thresholds and repair rules should be frozen before the final large-s
 
 ---
 
-## 13. Current Research Questions
+## 14. Current Research Questions
 
 The project is currently organized around several linked questions:
 
@@ -364,7 +409,7 @@ The project is currently organized around several linked questions:
 
 ---
 
-## 14. Repository Structure
+## 15. Repository Structure
 
 ```text
 AI-Aided-Hybrid-Beamforming-6G-FR3/
@@ -409,7 +454,7 @@ Only independently developed material with clear release status should be added 
 
 ---
 
-## 15. Public-Release Boundary
+## 16. Public-Release Boundary
 
 ### Intended for public release
 
@@ -432,7 +477,7 @@ Files whose ownership or redistribution status is uncertain should remain outsid
 
 ---
 
-## 16. Research Attribution
+## 17. Research Attribution
 
 This project was developed with reference to previously published model-driven deep-learning research on hybrid beamforming under imperfect CSI and outage constraints.
 
@@ -444,7 +489,7 @@ The complete bibliographic citation to the scientific reference will be included
 
 ---
 
-## 17. Research Integrity and Reproducibility
+## 18. Research Integrity and Reproducibility
 
 The project uses explicit versioning and frozen checkpoints to distinguish exploration from verified results.
 
@@ -463,7 +508,7 @@ These practices are intended to make AI-aided engineering decisions auditable ra
 
 ---
 
-## 18. Current Status
+## 19. Current Status
 
 ```text
 [Completed / Frozen]
@@ -475,18 +520,23 @@ These practices are intended to make AI-aided engineering decisions auditable ra
   P10/P14/P20/P24 internal-audit phase
   P17 reference failure/onset audit
 
+[Completed / Frozen — System V0.5 checkpoint]
+  P17 pre-failure history capture
+  P17 early-warning feasibility study
+  EASY / MODERATE / HARD recoverability analysis
+  FAST residual audit
+  P10/P14/P17/P24 cross-pilot validation
+  System V0.5 Cross-Pilot Benchmark Report V0.1
+
 [Active]
-  System V0.5
-    - pre-failure history capture
-    - precursor analysis
-    - EASY recovery characterization
-    - residual-failure / recoverability analysis
-    - hierarchical repair design
+  System V0.5 continuation
+    - MODERATE-case recovery design
+    - hierarchical repair closure
+    - predictive recoverability formulation
 
 [Next]
-  freeze early-warning rule
-  freeze repair hierarchy
-  cross-condition validation
+  deterministic DIGITAL/RF evaluation for MODERATE cases
+  freeze next-stage repair hierarchy
   20K+ statistical evaluation
 
 [Future]
@@ -498,7 +548,7 @@ These practices are intended to make AI-aided engineering decisions auditable ra
 
 ---
 
-## 19. Broader Research Direction
+## 20. Broader Research Direction
 
 This repository is one of two complementary AI-aided engineering research tracks:
 
@@ -516,7 +566,7 @@ A future direction is to connect these layers through AI-aided RF/PHY co-design 
 
 ---
 
-## 20. Code Availability
+## 21. Code Availability
 
 This repository is maintained primarily as a public research record
 for the AI-Aided Hybrid Beamforming for 6G FR3 project.
@@ -549,7 +599,7 @@ and independent validation.
 
 ---
 
-## 21. Citation
+## 22. Citation
 
 If this repository contributes to your research, please cite the corresponding publication or technical report associated with the specific released result.
 
