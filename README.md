@@ -299,8 +299,9 @@ Failure Episode
 
 Only **8.76–20.25%** of failure episodes enter the MODERATE escalation population. The HARD population ranges from **49.50–69.68%**, motivating selective abandonment rather than increasingly expensive recovery attempts for every failure.
 
-**Frozen technical report:** *System V0.5 Cross-Pilot Benchmark Report V0.1 — FROZEN (October 2026)*
-
+**Frozen technical report:**  
+[System V0.5 Cross-Pilot Benchmark Report V0.1 — FROZEN](docs/reports/System_V0.5_Cross-Pilot_Benchmark_Report_V0.1_FROZEN.docx)  
+October 2026
 This benchmark establishes cross-pilot feasibility of the recoverability-aware hierarchy. It does **not** yet demonstrate successful DIGITAL/RF recovery of MODERATE cases, independent predictive recoverability classification before repair, or a complete end-to-end operational reliability gain.
 
 ---
